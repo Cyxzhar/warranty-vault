@@ -15,6 +15,11 @@
   --color-text-tertiary: #9ca3af;
   --color-text-muted: #6b7280;
   
+  --color-status-active: #10b981;
+  --color-status-expiring: #f59e0b;
+  --color-status-expired: #ef4444;
+  --color-status-total: #8b5cf6;
+  
   --color-border-subtle: rgba(255, 255, 255, 0.1);
   --color-border-emphasis: rgba(249, 115, 22, 0.4);
 
@@ -30,6 +35,41 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+/* CSS Variables for Runtime Usage (Arbitrary Values) */
+:root {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #111827;
+  --bg-elevated: #1f2937;
+  
+  --accent-primary: #f97316;
+  --accent-secondary: #fbbf24;
+  --accent-tertiary: #10b981;
+  
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  
+  --status-active: #10b981;
+  --status-expiring: #f59e0b;
+  --status-expired: #ef4444;
+  --status-total: #8b5cf6;
+  
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-emphasis: rgba(249, 115, 22, 0.4);
+
+  /* Gradient start/end references */
+  --accent-gradient-start: #f97316;
+  --accent-gradient-end: #fbbf24;
+  
+  /* Radius - mapped for consistency if needed */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
 /* Global Reset & Base */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -43,8 +83,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
   margin: 0;
@@ -87,6 +127,26 @@ a {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+}
+
+/* Global Interactive Elements */
+button, 
+a, 
+[role="button"],
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"]::file-selector-button {
+  cursor: pointer;
+}
+
+/* Disable pointer for disabled elements */
+button:disabled,
+a[aria-disabled="true"],
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 /* Clean Background System */
@@ -142,6 +202,16 @@ a {
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
+.glass-card-hover:hover {
+  background: rgba(31, 41, 55, 0.6);
+  border-color: rgba(251, 191, 36, 0.3);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.2),
+    0 10px 10px -5px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
 }
@@ -149,6 +219,53 @@ a {
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.5; transform: scale(1); }
   50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+@keyframes gradient-border {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.text-gradient-hero {
+  background: linear-gradient(135deg, #f9fafb 0%, #d1d5db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-size-200 {
+  background-size: 200% 200%;
+}
+
+.bg-mesh {
+  background-color: #050810;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(249, 115, 22, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(16, 185, 129, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Scrollbar */
@@ -179,40 +296,4 @@ select {
   -moz-appearance: none;
   appearance: none;
   padding-right: 36px;
-}
-
-/* Global Interactive Elements */
-button, 
-a, 
-[role="button"],
-label[for],
-select,
-input[type="checkbox"],
-input[type="radio"],
-input[type="file"]::file-selector-button {
-  cursor: pointer;
-}
-
-/* Disable pointer for disabled elements */
-button:disabled,
-a[aria-disabled="true"],
-[role="button"][aria-disabled="true"] {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
-
-.text-gradient-hero {
-  background: linear-gradient(135deg, #f9fafb 0%, #d1d5db 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-accent {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.bg-size-200 {
-  background-size: 200% 200%;
 }
