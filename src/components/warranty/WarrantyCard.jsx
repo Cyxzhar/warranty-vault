@@ -50,16 +50,16 @@ export default function WarrantyCard({ warranty, onEdit, onDelete, onViewReceipt
             </div>
           )}
           
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/20 to-transparent" />
+          {/* Gradient overlay - Stronger gradient for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-secondary)] via-[var(--bg-secondary)]/40 to-transparent" />
           
-          {/* Status badge (top-right) */}
-          <div className="absolute top-4 right-4">
+          {/* Status badge (top-right) - Ensure contrast */}
+          <div className="absolute top-4 right-4 z-10 shadow-sm">
             <Badge status={status} days={daysLeft} />
           </div>
           
           {/* Category badge (bottom-left) */}
-          <div className="absolute bottom-4 left-4 px-2.5 py-1 rounded-full bg-[var(--bg-primary)]/80 backdrop-blur-sm border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] flex items-center gap-1.5">
+          <div className="absolute bottom-4 left-4 px-2.5 py-1 rounded-full bg-[var(--bg-primary)]/90 backdrop-blur-md border border-[var(--border-subtle)] text-xs font-medium text-[var(--text-secondary)] flex items-center gap-1.5 shadow-sm z-10">
             {getCategoryLabel(warranty.category)}
           </div>
         </div>
