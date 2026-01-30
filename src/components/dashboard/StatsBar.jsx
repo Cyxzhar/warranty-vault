@@ -2,16 +2,9 @@ import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Archive, ShieldCheck, Clock, AlertTriangle } from 'lucide-react';
 
-const statConfig = [
-  { key: 'all', label: 'Total', colorClass: 'text-white', icon: Archive, bgClass: 'bg-slate-700/30' },
-  { key: 'active', label: 'Active', colorClass: 'text-emerald-400', icon: ShieldCheck, bgClass: 'bg-emerald-500/10' },
-  { key: 'expiring', label: 'Expiring', colorClass: 'text-amber-400', icon: Clock, bgClass: 'bg-amber-500/10' },
-  { key: 'expired', label: 'Expired', colorClass: 'text-red-400', icon: AlertTriangle, bgClass: 'bg-red-500/10' },
-];
-
 function AnimatedNumber({ value, className }) {
-  const [display, setDisplay] = useState(value);
-  const prevRef = useRef(value);
+  const [display, setDisplay] = useState(0);
+  const prevRef = useRef(0);
 
   useEffect(() => {
     const from = prevRef.current;
@@ -19,12 +12,13 @@ function AnimatedNumber({ value, className }) {
     prevRef.current = value;
     if (from === to) return;
 
-    const duration = 400;
+    const duration = 800; // Slower, smoother
     const start = performance.now();
     function tick(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      // cubic-bezier(0.4, 0, 0.2, 1) approx
+      const eased = 1 - Math.pow(1 - progress, 4); 
       setDisplay(Math.round(from + (to - from) * eased));
       if (progress < 1) requestAnimationFrame(tick);
     }
@@ -34,45 +28,112 @@ function AnimatedNumber({ value, className }) {
   return <span className={className}>{display}</span>;
 }
 
-export default function StatsBar({ stats, activeFilter, onFilterChange }) {
+function StatsCard({ 
+  icon: Icon, 
+  label, 
+  value, 
+  colorVar, 
+  isActive, 
+  onClick, 
+  subtitle, 
+  trend, 
+  isHero = false 
+}) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-      {statConfig.map(({ key, label, colorClass, icon: Icon, bgClass }, i) => (
-        <motion.button
-          key={key}
-          onClick={() => onFilterChange(key)}
-          className={`relative p-4 rounded-2xl border text-left transition-all ${
-            activeFilter === key
-              ? 'bg-slate-800 border-amber-500/50 shadow-lg shadow-amber-500/10 ring-1 ring-amber-500/20'
-              : 'bg-slate-800/40 border-slate-700/50 hover:bg-slate-800 hover:border-slate-600'
-          }`}
-          whileHover={{ scale: 1.02, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.05 }}
-        >
-          <div className="flex items-start justify-between mb-2">
-            <div className={`p-2 rounded-lg ${bgClass}`}>
-              <Icon className={`w-5 h-5 ${colorClass}`} />
-            </div>
-            {activeFilter === key && (
-              <motion.div
-                layoutId="active-indicator"
-                className="w-1.5 h-1.5 rounded-full bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.5)]"
-              />
-            )}
+    <motion.button
+      onClick={onClick}
+      className={`relative overflow-hidden rounded-[var(--radius-lg)] border text-left transition-all duration-300 group
+        ${isActive 
+          ? `bg-[var(--bg-secondary)] border-[var(--border-emphasis)] shadow-lg shadow-[var(--${colorVar})]/10` 
+          : 'bg-[var(--bg-secondary)] border-[var(--border-subtle)] hover:border-[var(--border-emphasis)] hover:shadow-xl hover:-translate-y-1'
+        }
+        ${isHero ? 'col-span-3 md:col-span-1' : 'col-span-1'}
+      `}
+      whileTap={{ scale: 0.98 }}
+    >
+      {/* Background gradient (subtle) */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-[var(--${colorVar})]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
+      
+      <div className={`relative ${isHero ? 'p-6' : 'p-4 md:p-6'} space-y-4`}>
+        {/* Icon Row */}
+        <div className="flex items-center justify-between">
+          <div className={`p-2.5 rounded-[var(--radius-md)] bg-[var(--${colorVar})]/10 group-hover:bg-[var(--${colorVar})]/20 transition-colors`}>
+            <Icon className={`w-5 h-5 md:w-6 md:h-6 text-[var(--${colorVar})]`} />
           </div>
-          
-          <div className="space-y-0.5">
-            <AnimatedNumber
-              value={key === 'all' ? stats.total : stats[key]}
-              className="text-2xl font-bold text-white tracking-tight"
-            />
-            <div className="text-xs font-medium text-slate-400 uppercase tracking-wider">{label}</div>
-          </div>
-        </motion.button>
-      ))}
+          {trend && (
+             <span className="text-xs font-medium text-[var(--status-active)] bg-[var(--status-active)]/10 px-2 py-0.5 rounded-full">
+               {trend}
+             </span>
+          )}
+        </div>
+        
+        {/* Number + Label */}
+        <div className="space-y-1 md:space-y-2">
+          <p className="text-[var(--text-tertiary)] text-xs font-medium uppercase tracking-wider">
+            {label}
+          </p>
+          <AnimatedNumber
+            value={value}
+            className={`font-[var(--font-display)] font-extrabold text-[var(--text-primary)] group-hover:text-[var(--${colorVar})] transition-colors ${isHero ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl'}`}
+          />
+        </div>
+        
+        {/* Subtitle (Hero only or larger screens) */}
+        {subtitle && (
+          <p className="text-xs text-[var(--text-muted)] pt-3 border-t border-[var(--border-subtle)] hidden sm:block">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    </motion.button>
+  );
+}
+
+export default function StatsBar({ stats, activeFilter, onFilterChange }) {
+  // Mobile Layout: Hero (Total) on top, then 3 columns for others
+  // Desktop Layout: 4 columns
+  
+  return (
+    <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-6 mb-8">
+      {/* Total - Hero on mobile, 1st col on desktop */}
+      <StatsCard
+        icon={Archive}
+        label="Total"
+        value={stats.total}
+        colorVar="status-total"
+        isActive={activeFilter === 'all'}
+        onClick={() => onFilterChange('all')}
+        subtitle="All items tracked"
+        isHero={true}
+      />
+
+      <StatsCard
+        icon={ShieldCheck}
+        label="Active"
+        value={stats.active}
+        colorVar="status-active"
+        isActive={activeFilter === 'active'}
+        onClick={() => onFilterChange('active')}
+        trend={stats.active > 0 ? `${Math.round((stats.active/stats.total)*100)}%` : null}
+      />
+
+      <StatsCard
+        icon={Clock}
+        label="Expiring"
+        value={stats.expiring}
+        colorVar="status-expiring"
+        isActive={activeFilter === 'expiring'}
+        onClick={() => onFilterChange('expiring')}
+      />
+
+      <StatsCard
+        icon={AlertTriangle}
+        label="Expired"
+        value={stats.expired}
+        colorVar="status-expired"
+        isActive={activeFilter === 'expired'}
+        onClick={() => onFilterChange('expired')}
+      />
     </div>
   );
 }

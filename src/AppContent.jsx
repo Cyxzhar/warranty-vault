@@ -47,6 +47,7 @@ export default function AppContent({ onBackToLanding }) {
   const [categoryFilter, setCategoryFilter] = useLocalStorage(STORAGE_KEYS.CATEGORY_FILTER, 'all');
   const [sortBy, setSortBy] = useLocalStorage(STORAGE_KEYS.SORT_BY, 'expiry');
   const [sortOrder, setSortOrder] = useLocalStorage(STORAGE_KEYS.SORT_ORDER, 'asc');
+  const [viewMode, setViewMode] = useLocalStorage('warrantyVault_viewMode', 'grid');
 
   // Modal state
   const [showWarrantyModal, setShowWarrantyModal] = useState(false);
@@ -99,6 +100,13 @@ export default function AppContent({ onBackToLanding }) {
     sortBy,
     sortOrder,
   });
+
+  // Calculate category counts
+  const categoryCounts = warranties.reduce((acc, curr) => {
+    acc['all'] = (acc['all'] || 0) + 1;
+    acc[curr.category] = (acc[curr.category] || 0) + 1;
+    return acc;
+  }, {});
 
   // Handlers
   const handleOpenAdd = useCallback(() => {
@@ -213,7 +221,7 @@ export default function AppContent({ onBackToLanding }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
       <ToastContainer />
 
       <Header
@@ -228,26 +236,34 @@ export default function AppContent({ onBackToLanding }) {
         searchRef={searchRef}
       />
 
-      <main className="flex-1 max-w-3xl w-full mx-auto px-4 py-5">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8">
         <StatsBar
           stats={stats}
           activeFilter={statusFilter}
           onFilterChange={setStatusFilter}
         />
 
-        <CategoryFilter active={categoryFilter} onChange={setCategoryFilter} />
+        <CategoryFilter 
+          active={categoryFilter} 
+          onChange={setCategoryFilter} 
+          counts={categoryCounts}
+        />
 
         <SortControls
           sortBy={sortBy}
           sortOrder={sortOrder}
           onSortByChange={setSortBy}
           onSortOrderToggle={() => setSortOrder((o) => (o === 'asc' ? 'desc' : 'asc'))}
+          itemCount={filteredWarranties.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
         />
 
         <WarrantyList
           warranties={filteredWarranties}
           filter={statusFilter}
           searchTerm={debouncedTerm}
+          viewMode={viewMode}
           onEdit={handleOpenEdit}
           onDelete={handleOpenDelete}
           onViewReceipt={handleViewReceipt}

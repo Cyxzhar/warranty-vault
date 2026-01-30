@@ -6,6 +6,7 @@ export default function WarrantyList({
   warranties,
   filter,
   searchTerm,
+  viewMode = 'list',
   onEdit,
   onDelete,
   onViewReceipt,
@@ -34,20 +35,21 @@ export default function WarrantyList({
     }
     return (
       <EmptyState
-        message="No warranties yet. Add your first one!"
-        actionLabel="Add Warranty"
+        message="Your warranty vault is empty"
+        actionLabel="Add Your First Warranty"
         onAction={onAdd}
       />
     );
   }
 
   return (
-    <div className="space-y-3">
+    <div className={viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-4'}>
       <AnimatePresence mode="popLayout">
         {warranties.map((warranty) => (
           <WarrantyCard
             key={warranty.id}
             warranty={warranty}
+            viewMode={viewMode}
             onEdit={onEdit}
             onDelete={onDelete}
             onViewReceipt={onViewReceipt}
