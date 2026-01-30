@@ -1,122 +1,104 @@
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Zap, Star } from 'lucide-react';
 import FadeIn from '../animations/FadeIn';
-
-const plans = [
-  {
-    name: 'Free',
-    price: '$0',
-    period: '/ forever',
-    featured: false,
-    buttonLabel: 'Start Free',
-    features: [
-      'Track up to 10 warranties',
-      'Receipt photo storage',
-      'In-app expiry alerts',
-      'Works offline',
-    ],
-  },
-  {
-    name: 'Pro',
-    price: '$3',
-    period: '/ month',
-    featured: true,
-    buttonLabel: 'Join Waitlist',
-    features: [
-      'Unlimited warranties',
-      'Email reminders',
-      'SMS alerts',
-      'Family sharing (5 users)',
-      'Cloud sync across devices',
-    ],
-  },
-];
 
 export default function PricingSection({ onOpenApp }) {
   return (
-    <section id="pricing" className="py-20 sm:py-28 border-t border-slate-800">
-      <div className="max-w-[1100px] mx-auto px-6">
-        <FadeIn className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3">
-            Simple Pricing
-          </h2>
-          <p className="text-slate-400 text-lg">
-            Free forever. Pro for power users.
-          </p>
+    <section id="pricing" className="py-24 relative overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+        <FadeIn>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Simple, transparent <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">pricing</span>
+            </h2>
+            <p className="text-slate-400 text-lg">
+              Start for free. Upgrade when you need more power.
+            </p>
+          </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-[700px] mx-auto">
-          {plans.map((plan, i) => (
-            <FadeIn
-              key={plan.name}
-              delay={i * 0.15}
-              direction={i === 0 ? 'right' : 'left'}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-center">
+          {/* Free Tier */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="glass-card rounded-3xl p-8 relative overflow-hidden"
+          >
+            <h3 className="text-xl font-medium text-slate-300 mb-2">Free Forever</h3>
+            <div className="flex items-baseline gap-1 mb-6">
+              <span className="text-4xl font-bold text-white">$0</span>
+              <span className="text-slate-500">/month</span>
+            </div>
+            
+            <p className="text-slate-400 mb-8 text-sm">Perfect for individuals just getting started.</p>
+            
+            <ul className="space-y-4 mb-8">
+              {['10 Warranties', 'Local Storage', 'Basic Reminders', 'Works Offline'].map((item) => (
+                <li key={item} className="flex items-center gap-3 text-slate-300 text-sm">
+                  <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center">
+                    <Check className="w-3 h-3 text-emerald-400" />
+                  </div>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <button 
+              onClick={onOpenApp}
+              className="w-full py-3 rounded-xl border border-slate-700 text-white font-medium hover:bg-slate-800 transition-colors"
             >
-              <motion.div
-                className={`p-7 rounded-2xl border relative h-full ${
-                  plan.featured
-                    ? 'border-amber-400/60 bg-slate-800/60'
-                    : 'border-slate-700 bg-slate-800/50'
-                }`}
-                whileHover={{
-                  y: -8,
-                  transition: { duration: 0.25 },
-                }}
+              Start Free
+            </button>
+          </motion.div>
+
+          {/* Pro Tier (Hero) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-[34px] blur-lg opacity-40 animate-pulse-glow" />
+            
+            <div className="relative bg-slate-900/90 backdrop-blur-xl rounded-[30px] p-8 border border-amber-500/30 shadow-2xl">
+              <div className="absolute top-0 right-0 p-4">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-xs font-bold shadow-lg shadow-orange-500/20">
+                  <Star className="w-3 h-3 fill-current" />
+                  Coming Soon
+                </span>
+              </div>
+
+              <h3 className="text-xl font-bold text-white mb-2">Pro</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-orange-400">$3</span>
+                <span className="text-slate-500">/month</span>
+              </div>
+              
+              <p className="text-slate-400 mb-8 text-sm">For power users who want total peace of mind.</p>
+              
+              <ul className="space-y-4 mb-8">
+                {['Unlimited Warranties', 'Cloud Backup', 'Email & SMS Alerts', 'Priority Support', 'Receipt OCR'].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-white text-sm font-medium">
+                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20">
+                      <Check className="w-3 h-3 text-slate-900 stroke-[3]" />
+                    </div>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <button 
+                disabled
+                className="w-full py-4 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-bold text-lg hover:shadow-xl hover:shadow-orange-500/20 transition-all opacity-90 cursor-not-allowed"
               >
-                {/* Featured glow */}
-                {plan.featured && (
-                  <div className="absolute -inset-[1px] bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-2xl blur-sm -z-10" />
-                )}
-
-                {plan.featured && (
-                  <span className="absolute -top-3 right-6 px-3 py-1 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-xs font-semibold rounded-full shadow-lg shadow-amber-500/20">
-                    Coming Soon
-                  </span>
-                )}
-
-                <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
-                <div className="text-4xl font-bold mb-6">
-                  {plan.price}
-                  <span className="text-base font-normal text-slate-400 ml-1">{plan.period}</span>
-                </div>
-
-                <ul className="space-y-3 mb-7">
-                  {plan.features.map((feature, fi) => (
-                    <motion.li
-                      key={feature}
-                      className="flex items-center gap-3 text-[15px] text-slate-300"
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + fi * 0.08 }}
-                    >
-                      <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
-                        <Check className="w-3 h-3 text-emerald-400" />
-                      </div>
-                      {feature}
-                    </motion.li>
-                  ))}
-                </ul>
-
-                <motion.button
-                  onClick={plan.featured ? undefined : onOpenApp}
-                  className={`w-full py-3.5 rounded-xl font-semibold relative overflow-hidden group ${
-                    plan.featured
-                      ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900'
-                      : 'bg-slate-700 text-white hover:bg-slate-600'
-                  }`}
-                  whileHover={{ scale: 1.02, y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: 'spring', stiffness: 400 }}
-                >
-                  {plan.featured && (
-                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                  )}
-                  <span className="relative z-10">{plan.buttonLabel}</span>
-                </motion.button>
-              </motion.div>
-            </FadeIn>
-          ))}
+                Join Waitlist
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

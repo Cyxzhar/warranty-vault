@@ -1,184 +1,141 @@
 import { motion } from 'framer-motion';
-import { Shield, Clock, CheckCircle, AlertTriangle } from 'lucide-react';
-import AnimatedCounter from '../animations/AnimatedCounter';
-
-const wordVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: 0.3 + i * 0.08, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-};
+import { ArrowRight, Check, Shield, TrendingUp } from 'lucide-react';
+import hero3D from '../../assets/hero-3D.png';
 
 export default function HeroSection({ onOpenApp }) {
   return (
-    <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 text-center overflow-hidden">
-      <div className="max-w-[1100px] mx-auto px-6 relative">
-        {/* Ambient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-amber-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden bg-mesh">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-[100px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: '1s' }} />
+      </div>
 
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 bg-amber-400/10 border border-amber-400/20 rounded-full text-sm text-amber-400 mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
-          </span>
-          Free &middot; No account required &middot; Works offline
-        </motion.div>
-
-        {/* Headline - word by word */}
-        <h1 className="text-4xl sm:text-5xl lg:text-[64px] font-bold tracking-tight leading-[1.08] mb-7">
-          {['Never', 'lose', 'money', 'on'].map((word, i) => (
-            <motion.span
-              key={word}
-              custom={i}
-              variants={wordVariants}
-              initial="hidden"
-              animate="visible"
-              className="inline-block mr-[0.3em]"
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+          
+          {/* Left Content */}
+          <div className="lg:col-span-7 flex flex-col gap-8 text-center lg:text-left">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 backdrop-blur-md border border-slate-700/50 text-slate-300 text-sm font-medium self-center lg:self-start hover:border-amber-500/30 transition-colors"
             >
-              {word}
-            </motion.span>
-          ))}
-          <br />
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="inline-block bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"
-          >
-            expired warranties
-          </motion.span>{' '}
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.85, duration: 0.5 }}
-            className="inline-block"
-          >
-            again
-          </motion.span>
-        </h1>
+              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> Free</span>
+              <span className="w-1 h-1 rounded-full bg-slate-600" />
+              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> No Account</span>
+              <span className="w-1 h-1 rounded-full bg-slate-600" />
+              <span className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-emerald-400" /> Offline</span>
+            </motion.div>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.5 }}
-          className="text-lg sm:text-xl text-slate-400 max-w-[540px] mx-auto mb-10 leading-relaxed"
-        >
-          The dead-simple warranty tracker. Snap a photo of your receipt, set the date,
-          get reminded before it expires.{' '}
-          <span className="text-slate-300 font-medium">That's it.</span>
-        </motion.p>
-
-        {/* Pain stat */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.15, duration: 0.5 }}
-          className="inline-flex items-center gap-5 px-7 py-4 bg-red-500/10 border border-red-500/20 rounded-2xl mb-10 hover:bg-red-500/[0.14] transition-colors"
-        >
-          <AnimatedCounter
-            target={400}
-            prefix="$"
-            suffix="+"
-            className="text-4xl font-bold text-red-400"
-          />
-          <span className="text-left text-[15px] text-slate-300 max-w-[200px]">
-            Average amount households lose yearly on expired warranties
-          </span>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.5 }}
-          className="flex flex-col items-center gap-4"
-        >
-          <motion.button
-            onClick={onOpenApp}
-            className="relative px-9 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-bold text-lg rounded-xl overflow-hidden group"
-            whileHover={{ scale: 1.03, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ type: 'spring', stiffness: 400 }}
-          >
-            {/* Shimmer */}
-            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-            <span className="relative z-10">Start Tracking — It's Free</span>
-          </motion.button>
-          <p className="text-sm text-slate-500">No signup. Your data stays on your device.</p>
-        </motion.div>
-
-        {/* App Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="mt-16 max-w-[380px] mx-auto"
-        >
-          <motion.div
-            className="p-[3px] bg-gradient-to-br from-amber-400 to-orange-500 rounded-[20px] shadow-2xl shadow-black/50 relative"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            {/* Glow */}
-            <div className="absolute -inset-1 bg-gradient-to-br from-amber-400/20 to-orange-500/20 rounded-[24px] blur-xl opacity-50" />
-
-            <div className="bg-slate-900 rounded-[17px] overflow-hidden relative">
-              {/* Preview header */}
-              <div className="px-5 py-3.5 border-b border-slate-800 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                  <Shield className="w-[18px] h-[18px] text-slate-900" strokeWidth={2.5} />
-                </div>
-                <span className="font-semibold text-[15px]">My Warranties</span>
-              </div>
-              {/* Preview cards */}
-              <div className="p-4 space-y-3">
-                {[
-                  { name: 'LG Refrigerator', status: 'expiring', label: 'Expires in 23 days', Icon: Clock, delay: 1.7 },
-                  { name: 'Samsung TV 55"', status: 'active', label: '287 days remaining', Icon: CheckCircle, delay: 1.85 },
-                  { name: 'Dyson Vacuum', status: 'expired', label: 'Expired 14 days ago', Icon: AlertTriangle, delay: 2.0 },
-                ].map((card) => (
-                  <motion.div
-                    key={card.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: card.delay, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+            {/* Headline */}
+            <div className="space-y-4">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
+              >
+                Never lose money on <br className="hidden sm:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 relative inline-block">
+                  expired warranties
+                  <motion.svg
+                    className="absolute -bottom-2 left-0 w-full h-3 text-orange-500/30"
+                    viewBox="0 0 100 10"
+                    preserveAspectRatio="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
                   >
-                    <PreviewCard {...card} />
-                  </motion.div>
-                ))}
-              </div>
+                    <motion.path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
+                  </motion.svg>
+                </span>
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+              >
+                Stop letting hundreds of dollars slip away. Track your product warranties in seconds. 
+                Secure, private, and always on your device.
+              </motion.p>
             </div>
+
+            {/* CTA & Stats */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+              <motion.button
+                onClick={onOpenApp}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative overflow-hidden px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-2xl font-bold text-lg shadow-[0_10px_40px_-10px_rgba(249,115,22,0.5)] group w-full sm:w-auto"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Start Tracking Free
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </motion.button>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex items-center gap-2 text-sm text-slate-400"
+              >
+                <Shield className="w-5 h-5 text-emerald-400" />
+                <span>100% Private & Secure</span>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Right Visual */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-5 relative perspective-1000"
+          >
+            {/* 3D Image */}
+            <motion.div
+              animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              className="relative z-10"
+            >
+              <img 
+                src={hero3D} 
+                alt="Warranty Vault 3D Interface" 
+                className="w-full h-auto drop-shadow-2xl"
+              />
+            </motion.div>
+
+            {/* Floating Stat Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 0.6, type: "spring" }}
+              className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 bg-slate-800/80 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-2xl animate-float-delayed z-20 max-w-[200px]"
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <div className="p-2 bg-red-500/20 rounded-lg">
+                  <TrendingUp className="w-5 h-5 text-red-400" />
+                </div>
+                <span className="text-xs font-medium text-slate-400">Avg Loss/Year</span>
+              </div>
+              <div className="text-3xl font-bold text-white mb-1">$400+</div>
+              <div className="text-xs text-slate-500">on expired warranties</div>
+            </motion.div>
+
+            {/* Glow Behind */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-purple-500/20 blur-[80px] -z-10 rounded-full" />
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
-  );
-}
-
-const statusColors = {
-  active: { border: 'border-l-emerald-500', badge: 'bg-emerald-500/15 text-emerald-400' },
-  expiring: { border: 'border-l-amber-400', badge: 'bg-amber-400/15 text-amber-400' },
-  expired: { border: 'border-l-red-500', badge: 'bg-red-500/15 text-red-400' },
-};
-
-function PreviewCard({ name, status, label, Icon }) {
-  const colors = statusColors[status];
-  return (
-    <div className={`px-4 py-3.5 bg-slate-800 rounded-xl border-l-4 ${colors.border} hover:bg-slate-750 transition-colors`}>
-      <h4 className="font-semibold text-[15px] mb-2">{name}</h4>
-      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium ${colors.badge}`}>
-        <Icon className="w-3 h-3" />
-        {label}
-      </span>
-    </div>
   );
 }
