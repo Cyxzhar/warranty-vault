@@ -99,19 +99,24 @@ export default function HeroSection({ onOpenApp }) {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-5 relative perspective-1000"
+            className="lg:col-span-5 relative perspective-1000 flex justify-center"
           >
-            {/* 3D Image */}
+            {/* 3D Image Container - Cropped to hide logo */}
             <motion.div
               animate={{ rotateY: [-5, 5, -5], rotateX: [2, -2, 2] }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="relative z-10"
+              className="relative z-10 w-full max-w-md lg:max-w-full rounded-3xl overflow-hidden shadow-2xl border border-white/5"
             >
-              <img 
-                src={hero3D} 
-                alt="Warranty Vault 3D Interface" 
-                className="w-full h-auto drop-shadow-2xl"
-              />
+              <div className="relative w-full pb-[120%]"> {/* Aspect Ratio Container */}
+                 <img 
+                  src={hero3D} 
+                  alt="Warranty Vault 3D Interface" 
+                  className="absolute inset-0 w-full h-full object-cover object-top scale-[1.02] translate-y-[-1%]" 
+                />
+              </div>
+              
+              {/* Gloss Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />
             </motion.div>
 
             {/* Floating Stat Card */}
@@ -119,7 +124,7 @@ export default function HeroSection({ onOpenApp }) {
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.6, type: "spring" }}
-              className="absolute -bottom-6 -left-6 sm:-bottom-10 sm:-left-10 bg-slate-800/80 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-2xl animate-float-delayed z-20 max-w-[200px]"
+              className="absolute bottom-10 -left-6 sm:bottom-20 sm:-left-10 bg-slate-800/90 backdrop-blur-xl p-5 rounded-2xl border border-slate-700 shadow-2xl animate-float-delayed z-20 max-w-[200px]"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div className="p-2 bg-red-500/20 rounded-lg">
@@ -132,7 +137,7 @@ export default function HeroSection({ onOpenApp }) {
             </motion.div>
 
             {/* Glow Behind */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-purple-500/20 blur-[80px] -z-10 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-tr from-amber-500/20 to-purple-500/20 blur-[80px] -z-10 rounded-full" />
           </motion.div>
         </div>
       </div>
