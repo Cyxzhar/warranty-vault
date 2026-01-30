@@ -132,3 +132,23 @@ select {
   appearance: none;
   padding-right: 36px;
 }
+
+/* Global Interactive Elements */
+button, 
+a, 
+[role="button"],
+label[for],
+select,
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"]::file-selector-button {
+  cursor: pointer;
+}
+
+/* Disable pointer for disabled elements */
+button:disabled,
+a[aria-disabled="true"],
+[role="button"][aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
