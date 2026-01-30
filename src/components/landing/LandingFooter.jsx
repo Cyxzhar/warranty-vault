@@ -1,4 +1,4 @@
-import { Shield, Lock, Zap, UserX } from 'lucide-react';
+import { Shield, Lock, Zap, UserX, Check } from 'lucide-react';
 import FadeIn from '../animations/FadeIn';
 
 export default function LandingFooter({ onOpenApp }) {
@@ -9,73 +9,90 @@ export default function LandingFooter({ onOpenApp }) {
   };
 
   return (
-    <footer className="mt-auto border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)]/30 backdrop-blur-xl pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="mt-auto border-t border-slate-800 bg-[#0a0e1a] pt-24 pb-12 relative overflow-hidden">
+      {/* Decorative gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent opacity-50" />
+
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-12 gap-10 mb-12 border-b border-[var(--border-subtle)] pb-12">
-            {/* Brand */}
-            <div className="sm:col-span-4 space-y-4">
-              <div className="flex items-center gap-2">
-                 <Shield className="w-6 h-6 text-[var(--accent-primary)]" />
-                 <span className="font-[var(--font-display)] font-bold text-[var(--text-primary)] text-lg">Warranty Vault</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 mb-20">
+            {/* Column 1: Brand */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                    <Shield className="w-6 h-6 text-slate-900" strokeWidth={2.5} />
+                 </div>
+                 <span className="font-[800] text-white text-xl tracking-tight">Warranty Vault</span>
               </div>
-              <p className="text-sm text-[var(--text-secondary)] leading-relaxed max-w-xs">
-                The dead-simple warranty tracker. Stop losing money on expired warranties.
-                Your data stays on your device.
+              <p className="text-slate-400 leading-relaxed text-base">
+                The privacy-first warranty tracker that helps you save money and stay organized. 
+                Zero cloud dependencies.
               </p>
               {onOpenApp && (
                 <button
                   onClick={onOpenApp}
-                  className="px-6 py-2.5 bg-gradient-to-r from-[var(--accent-gradient-start)] to-[var(--accent-gradient-end)] text-[var(--bg-primary)] font-semibold text-sm rounded-[var(--radius-md)] shadow-lg shadow-[var(--accent-primary)]/20 hover:shadow-[var(--accent-primary)]/40 transition-all hover:-translate-y-0.5 active:scale-[0.98]"
+                  className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-medium text-sm rounded-xl border border-slate-700 transition-all hover:border-slate-600"
                 >
-                  Start Tracking
+                  Start Tracking Now
                 </button>
               )}
             </div>
 
-            {/* Product */}
-            <div className="sm:col-span-2 sm:col-start-7 space-y-4">
-              <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Product</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#features" onClick={(e) => handleLinkClick(e, '#features')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Features</a></li>
-                <li><a href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">How It Works</a></li>
-                <li><a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Pricing</a></li>
+            {/* Column 2: Product */}
+            <div className="space-y-6">
+              <h4 className="font-bold text-white text-base">Product</h4>
+              <ul className="space-y-4">
+                <li><a href="#features" onClick={(e) => handleLinkClick(e, '#features')} className="text-slate-400 hover:text-amber-400 transition-colors">Features</a></li>
+                <li><a href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="text-slate-400 hover:text-amber-400 transition-colors">How It Works</a></li>
+                <li><a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-slate-400 hover:text-amber-400 transition-colors">Pricing</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Changelog</a></li>
               </ul>
             </div>
 
-             {/* Privacy */}
-            <div className="sm:col-span-4 space-y-4">
-              <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Privacy First</h4>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                  <Shield className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                  <span>Your data stays on your device</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                  <Lock className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                  <span>Zero tracking or analytics</span>
-                </li>
-                <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                  <UserX className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                  <span>No account required</span>
-                </li>
+             {/* Column 3: Resources */}
+             <div className="space-y-6">
+              <h4 className="font-bold text-white text-base">Resources</h4>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Support Center</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Privacy Guide</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">GitHub Repo</a></li>
               </ul>
+            </div>
+
+             {/* Column 4: Privacy Trust */}
+            <div className="space-y-6">
+              <h4 className="font-bold text-white text-base">Privacy First</h4>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                  <Shield className="w-5 h-5 text-emerald-400" />
+                  <span className="text-slate-300 text-sm font-medium">Data Stays Local</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                  <Lock className="w-5 h-5 text-emerald-400" />
+                  <span className="text-slate-300 text-sm font-medium">Zero Tracking</span>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
+                  <UserX className="w-5 h-5 text-emerald-400" />
+                  <span className="text-slate-300 text-sm font-medium">No Account Required</span>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Bottom bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
-            <p>
-              &copy; {new Date().getFullYear()} Warranty Vault. All rights reserved.
+          <div className="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6">
+            <p className="text-slate-500 text-sm">
+              &copy; {new Date().getFullYear()} Warranty Vault. Open source and free forever.
             </p>
-            <div className="flex items-center gap-6">
-               <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--status-active)]" />
-                 <span>100% Free</span>
+            <div className="flex flex-wrap items-center gap-6">
+               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
+                 <Check className="w-3 h-3" strokeWidth={3} />
+                 <span>100% FREE</span>
                </div>
-               <div className="flex items-center gap-2">
-                 <div className="w-1.5 h-1.5 rounded-full bg-[var(--status-active)]" />
-                 <span>Open Source</span>
+               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold">
+                 <Check className="w-3 h-3" strokeWidth={3} />
+                 <span>OPEN SOURCE</span>
                </div>
             </div>
           </div>
