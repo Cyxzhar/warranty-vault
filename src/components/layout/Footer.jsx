@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Bell, Lock, Zap, UserX, ExternalLink } from 'lucide-react';
+import { Shield, Bell, Lock, Zap, UserX } from 'lucide-react';
 
 export default function Footer({ onRequestNotifications, notificationStatus }) {
   return (
@@ -36,8 +36,8 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
           )}
         </div>
 
-        {/* Middle Grid (Desktop) */}
-        <div className="hidden md:grid grid-cols-4 gap-8 mb-10 border-b border-[var(--border-subtle)] pb-10">
+        {/* Middle Grid (Desktop) - Simplified for App */}
+        <div className="hidden md:grid grid-cols-3 gap-8 mb-10 border-b border-[var(--border-subtle)] pb-10">
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
@@ -45,27 +45,17 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
                <span className="font-[var(--font-display)] font-bold text-[var(--text-primary)]">Warranty Vault</span>
             </div>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              The dead-simple warranty tracker. Never lose money on expired coverage again.
+              Your personal warranty tracker. Data stays on your device.
             </p>
-          </div>
-          
-          {/* Product */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Product</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Features</a></li>
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Pricing</a></li>
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Roadmap</a></li>
-            </ul>
           </div>
           
           {/* Resources */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Resources</h4>
+            <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Support</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Support</a></li>
+              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Help Center</a></li>
               <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Privacy Guide</a></li>
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Blog</a></li>
+              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Feedback</a></li>
             </ul>
           </div>
           
@@ -97,7 +87,6 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
           <div className="flex items-center gap-6">
              <a href="#" className="hover:text-[var(--accent-primary)] transition-colors">Privacy Policy</a>
              <a href="#" className="hover:text-[var(--accent-primary)] transition-colors">Terms of Service</a>
-             <a href="#" className="hover:text-[var(--accent-primary)] transition-colors">Contact</a>
           </div>
         </div>
       </div>

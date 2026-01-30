@@ -56,7 +56,6 @@ export default function LandingFooter({ onOpenApp }) {
                 <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Support Center</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Privacy Guide</a></li>
                 <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">GitHub Repo</a></li>
               </ul>
             </div>
 
@@ -83,16 +82,12 @@ export default function LandingFooter({ onOpenApp }) {
           {/* Bottom bar */}
           <div className="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6">
             <p className="text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Warranty Vault. Open source and free forever.
+              &copy; {new Date().getFullYear()} Warranty Vault. Made with ❤️ for privacy.
             </p>
             <div className="flex flex-wrap items-center gap-6">
                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold">
                  <Check className="w-3 h-3" strokeWidth={3} />
                  <span>100% FREE</span>
-               </div>
-               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold">
-                 <Check className="w-3 h-3" strokeWidth={3} />
-                 <span>OPEN SOURCE</span>
                </div>
             </div>
           </div>

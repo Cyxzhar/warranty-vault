@@ -64,11 +64,11 @@ export default function PricingSection({ onOpenApp }) {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative transform md:scale-105 z-10"
           >
-            {/* Glow Effect */}
-            <div className="absolute -inset-0.5 bg-gradient-to-br from-amber-400 to-orange-600 rounded-[2.1rem] blur opacity-30 animate-pulse-glow" />
+            {/* Glow Effect - Subtler */}
+            <div className="absolute -inset-0.5 bg-gradient-to-br from-amber-400 to-orange-600 rounded-[2.1rem] blur opacity-20 animate-pulse-glow" />
             
-            <div className="relative bg-slate-900 rounded-[2rem] p-10 border border-amber-500/30 shadow-2xl">
-              <div className="absolute top-0 right-0 p-6">
+            <div className="relative bg-slate-900 rounded-[2rem] p-10 border border-amber-500/20 shadow-2xl">
+              <div className="absolute top-6 right-6">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold shadow-lg shadow-orange-500/20 tracking-wide uppercase">
                   <Star className="w-3 h-3 fill-current" />
                   Coming Soon

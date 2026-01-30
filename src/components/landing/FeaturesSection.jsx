@@ -1,107 +1,81 @@
 import { motion } from 'framer-motion';
-import { Shield, Smartphone, Zap, Lock, Bell, CloudOff } from 'lucide-react';
+import { Shield, Bell, Layers } from 'lucide-react';
 import FadeIn from '../animations/FadeIn';
-import cardTexture from '../../assets/feature_card_background.png';
 
 const features = [
   {
-    icon: Smartphone,
-    title: "Mobile First",
-    desc: "Designed for the device you always have with you. Snap receipts instantly.",
-    color: "text-blue-400",
-    gradient: "from-blue-500/20 to-cyan-500/20",
+    icon: Layers,
+    title: "Set up in 30 seconds",
+    desc: "No account. No forms. Just add your first warranty and you're done.",
+    color: "text-orange-400",
+    gradient: "from-orange-500/20 to-amber-500/5",
     delay: 0
   },
   {
-    icon: Bell,
-    title: "Smart Reminders",
-    desc: "Get notified before your warranty expires so you never miss a claim window.",
-    color: "text-amber-400",
-    gradient: "from-amber-500/20 to-orange-500/20",
-    delay: 0.1
-  },
-  {
-    icon: CloudOff,
-    title: "Works Offline",
-    desc: "No internet? No problem. Access your data anywhere, anytime.",
-    color: "text-emerald-400",
-    gradient: "from-emerald-500/20 to-teal-500/20",
-    delay: 0.2
-  },
-  {
     icon: Shield,
-    title: "Privacy Focused",
-    desc: "Your data stays on your device. We don't track you or sell your info.",
-    color: "text-purple-400",
-    gradient: "from-purple-500/20 to-pink-500/20",
+    title: "Your vault, your device",
+    desc: "Zero cloud storage. No tracking pixels. Your data never leaves your phone.",
+    badges: ["Local Storage", "No Account", "Open Source"],
+    color: "text-emerald-400",
+    gradient: "from-emerald-500/20 to-teal-500/5",
+    hero: true,
+    delay: 0.15
+  },
+  {
+    icon: Bell,
+    title: "Smart reminders",
+    desc: "Get alerted 30 days before expiry. Never lose money on missed warranties.",
+    color: "text-amber-400",
+    gradient: "from-amber-500/20 to-yellow-500/5",
     delay: 0.3
-  },
-  {
-    icon: Lock,
-    title: "Secure Storage",
-    desc: "Bank-grade encryption for your local data. Your receipts are safe.",
-    color: "text-rose-400",
-    gradient: "from-rose-500/20 to-red-500/20",
-    delay: 0.4
-  },
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    desc: "Optimized for speed. Load your vault instantly without waiting.",
-    color: "text-yellow-400",
-    gradient: "from-yellow-500/20 to-amber-500/20",
-    delay: 0.5
   }
 ];
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-24 relative overflow-hidden">
-      {/* Abstract Background Shapes */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-[1200px] mx-auto px-6 relative z-10">
+    <section id="features" className="py-32 relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="text-center max-w-2xl mx-auto mb-20">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-              Why use <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Warranty Vault</span>?
+          <div className="text-center mb-24">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
+              Why developers <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">trust</span> Warranty Vault
             </h2>
-            <p className="text-slate-400 text-lg">
-              We built the tool we wanted to use. Simple, fast, and respectful of your privacy.
-            </p>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: feature.delay, duration: 0.5 }}
-              className="group"
+              transition={{ delay: feature.delay, duration: 0.6 }}
+              className={`relative group ${feature.hero ? 'lg:-mt-8 lg:mb-8' : ''}`}
             >
-              <div className="h-full glass-card glass-card-hover rounded-2xl p-6 relative overflow-hidden transition-all duration-300">
-                {/* Texture Overlay */}
-                <div 
-                  className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none"
-                  style={{ backgroundImage: `url(${cardTexture})`, backgroundSize: 'cover' }}
-                />
-                
+              <div className={`h-full glass-card rounded-[2rem] p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-white/5 ${feature.hero ? 'bg-slate-800/40 border-emerald-500/20 shadow-emerald-500/10' : ''}`}>
                 {/* Hover Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
-                <div className="relative z-10">
-                  <div className={`w-12 h-12 rounded-xl bg-slate-800/80 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-slate-700`}>
-                    <feature.icon className={`w-6 h-6 ${feature.color}`} strokeWidth={2} />
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className={`w-16 h-16 rounded-2xl bg-slate-900/50 flex items-center justify-center mb-8 border border-white/5 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <feature.icon className={`w-8 h-8 ${feature.color}`} strokeWidth={1.5} />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
+                  <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                  <p className="text-slate-400 text-lg leading-relaxed mb-8 flex-1">
                     {feature.desc}
                   </p>
+
+                  {feature.badges && (
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {feature.badges.map(badge => (
+                        <span key={badge} className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium">
+                          {badge}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </motion.div>
