@@ -76,45 +76,58 @@ export default function HeroSection({ onOpenApp }) {
             </motion.div>
           </div>
 
-          {/* Visual (45%) */}
-          <div className="flex-1 w-full relative z-10 perspective-1000">
-            {/* Image Container with crop */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50, rotateY: -10 }}
-              animate={{ opacity: 1, x: 0, rotateY: -5 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="relative rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl bg-slate-900/50 aspect-[4/5] lg:aspect-[3/4]"
-            >
-              <img 
-                src={hero3D} 
-                alt="App Interface" 
-                className="absolute inset-0 w-full h-full object-cover object-top scale-105"
-              />
-              
-              {/* Gloss Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none" />
-            </motion.div>
+          {/* Right Visual (45%) */}
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="lg:col-span-6 relative flex justify-center lg:justify-end w-full"
+          >
+            {/* 3D Image Container - Constrained */}
+            <div className="relative w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[500px] aspect-[4/5] mx-auto lg:mx-0">
+              <motion.div
+                animate={{ rotateY: [-2, 2, -2], rotateX: [1, -1, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="relative z-10 w-full h-full rounded-[2rem] overflow-hidden shadow-2xl border border-white/5 bg-slate-900/50 backdrop-blur-sm group"
+              >
+                {/* Image Positioning */}
+                <div className="absolute inset-0"> 
+                   <img 
+                    src={hero3D} 
+                    alt="Warranty Vault 3D Interface" 
+                    className="w-full h-full object-cover object-top scale-105" 
+                  />
+                </div>
+                
+                {/* Gloss Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent pointer-events-none mix-blend-overlay" />
+                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.5)] pointer-events-none" />
+              </motion.div>
 
-            {/* Floating Stat Card - Reintegrated */}
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, type: "spring" }}
-              className="absolute -bottom-10 -left-4 lg:-left-12 bg-slate-800/90 backdrop-blur-xl p-6 rounded-2xl border border-slate-700 shadow-2xl min-w-[260px]"
-            >
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Annual Loss</span>
-              </div>
-              <div className="flex items-baseline gap-1">
-                <span className="text-4xl font-[800] text-white">$400</span>
-                <span className="text-2xl font-bold text-red-500">+</span>
-              </div>
-              <div className="text-xs text-slate-400 mt-1">Average per household</div>
-              <div className="w-full h-1 bg-slate-700 rounded-full mt-4 overflow-hidden">
-                <div className="h-full bg-red-500 w-[80%]" />
-              </div>
-            </motion.div>
-          </div>
+              {/* Floating Stat Card - Positioned relative to container */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+                className="absolute -bottom-6 -left-4 sm:-left-12 bg-slate-900/90 backdrop-blur-xl p-5 rounded-2xl border border-slate-700/50 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] z-20 min-w-[200px] max-w-[240px]"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Annual Loss</span>
+                </div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-[800] text-white">$400</span>
+                  <span className="text-xl font-bold text-red-500">+</span>
+                </div>
+                <div className="text-[10px] text-slate-400 mt-1">Average per household</div>
+                <div className="w-full h-1 bg-slate-700 rounded-full mt-3 overflow-hidden">
+                  <div className="h-full bg-red-500 w-[80%]" />
+                </div>
+              </motion.div>
+
+              {/* Glow Behind */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-amber-500/10 via-indigo-500/10 to-purple-500/10 blur-[80px] -z-10 rounded-full pointer-events-none" />
+            </div>
+          </motion.div>
 
         </div>
       </div>
