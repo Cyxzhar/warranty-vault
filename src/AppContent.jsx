@@ -221,7 +221,7 @@ export default function AppContent({ onBackToLanding }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-mesh text-[var(--text-primary)] transition-colors duration-300 relative">
+    <div className="min-h-screen flex flex-col bg-[#0a0e1a] text-[var(--text-primary)] transition-colors duration-300 relative">
       <ToastContainer />
 
       <Header

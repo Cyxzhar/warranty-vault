@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Shield, Check, TrendingUp } from 'lucide-react';
-import hero3D from '../../assets/hero-3D.png';
+import hero3D from '../../assets/hero-background.png';
 
 export default function HeroSection({ onOpenApp }) {
+  
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
