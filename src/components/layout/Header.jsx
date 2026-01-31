@@ -64,9 +64,8 @@ export default function Header({
             onClick={onLogoClick}
             whileHover={{ scale: 1.02 }}
           >
-            <div className="relative">
-              <Shield className="w-8 h-8 md:w-9 md:h-9 text-[var(--accent-primary)] transition-transform duration-300 group-hover:rotate-12" />
-              <div className="absolute inset-0 rounded-full bg-[var(--accent-primary)]/20 animate-ping opacity-75" />
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:rotate-6 transition-transform duration-300">
+              <Shield className="w-5 h-5 md:w-5.5 md:h-5.5 text-slate-900" strokeWidth={2.5} />
             </div>
             <span className="font-[var(--font-display)] font-bold text-lg tracking-tight hidden md:block text-[var(--text-primary)]">
               Warranty Vault
