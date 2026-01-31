@@ -346,7 +346,7 @@ export default function WarrantyForm({ initialData, onSubmit, onCancel }) {
         <motion.button
           type="button"
           onClick={onCancel}
-          className="flex-1 py-3 px-4 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-xl transition-colors"
+          className="flex-1 py-3 px-4 bg-slate-800 border border-slate-600 hover:bg-slate-700 hover:border-slate-500 text-white font-medium rounded-xl transition-colors"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
