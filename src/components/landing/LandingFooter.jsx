@@ -1,4 +1,4 @@
-import { Shield, Lock, Zap, UserX, Check } from 'lucide-react';
+import { Shield, Lock, Check, Zap } from 'lucide-react';
 import FadeIn from '../animations/FadeIn';
 
 export default function LandingFooter({ onOpenApp }) {
@@ -9,9 +9,9 @@ export default function LandingFooter({ onOpenApp }) {
   };
 
   return (
-    <footer className="mt-auto border-t border-slate-800 bg-[#0a0e1a] pt-24 pb-12 relative overflow-hidden">
-      {/* Decorative gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent opacity-50" />
+    <footer className="mt-auto bg-[#0a0e1a] pt-16 pb-12 relative overflow-hidden">
+      {/* Gradient separator */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent" />
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
@@ -65,15 +65,15 @@ export default function LandingFooter({ onOpenApp }) {
               <div className="space-y-4">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
                   <Shield className="w-5 h-5 text-emerald-400" />
-                  <span className="text-slate-300 text-sm font-medium">Data Stays Local</span>
+                  <span className="text-slate-300 text-sm font-medium">Secure & Private</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
                   <Lock className="w-5 h-5 text-emerald-400" />
                   <span className="text-slate-300 text-sm font-medium">Zero Tracking</span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                  <UserX className="w-5 h-5 text-emerald-400" />
-                  <span className="text-slate-300 text-sm font-medium">No Account Required</span>
+                  <Zap className="w-5 h-5 text-emerald-400" />
+                  <span className="text-slate-300 text-sm font-medium">Free Forever</span>
                 </div>
               </div>
             </div>

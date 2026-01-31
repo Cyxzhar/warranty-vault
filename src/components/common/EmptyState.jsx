@@ -73,7 +73,7 @@ export default function EmptyState({ message, actionLabel, onAction }) {
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed max-w-sm mx-auto">
              Start tracking your warranties to never lose money on expired coverage again. 
-             Add your first item in seconds—no account needed.
+             Add your first item in seconds—it's quick and easy.
           </p>
         </div>
         

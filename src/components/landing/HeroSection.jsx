@@ -5,7 +5,7 @@ import hero3D from '../../assets/hero-background.png';
 export default function HeroSection({ onOpenApp }) {
   
   return (
-    <section className="relative pt-28 pb-16 lg:pt-40 lg:pb-24 overflow-hidden">
+    <section className="relative pt-28 pb-12 lg:pt-40 lg:pb-16 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
@@ -20,11 +20,6 @@ export default function HeroSection({ onOpenApp }) {
               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
                 <Check className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Free Forever</span>
-              </div>
-              <div className="w-px h-3.5 bg-slate-700" />
-              <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span>No Account</span>
               </div>
               <div className="w-px h-3.5 bg-slate-700" />
               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">

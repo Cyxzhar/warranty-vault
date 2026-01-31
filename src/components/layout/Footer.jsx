@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Bell, Lock, Zap, UserX } from 'lucide-react';
+import { Shield, Bell, Lock, Zap } from 'lucide-react';
 
 export default function Footer({ onRequestNotifications, notificationStatus }) {
   return (
@@ -12,7 +12,7 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
            <div className="flex flex-wrap items-center justify-center gap-3">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-xs text-[var(--text-secondary)]">
               <Shield className="w-3.5 h-3.5 text-[var(--status-active)]" />
-              Local storage only
+              Secure & private
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-xs text-[var(--text-secondary)]">
               <Lock className="w-3.5 h-3.5 text-[var(--status-active)]" />
@@ -40,12 +40,14 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
         <div className="hidden md:grid grid-cols-3 gap-8 mb-10 border-b border-[var(--border-subtle)] pb-10">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-               <Shield className="w-6 h-6 text-[var(--accent-primary)]" />
+            <div className="flex items-center gap-3">
+               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
+                 <Shield className="w-5 h-5 text-slate-900" strokeWidth={2.5} />
+               </div>
                <span className="font-[var(--font-display)] font-bold text-[var(--text-primary)]">Warranty Vault</span>
             </div>
             <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              Your personal warranty tracker. Data stays on your device.
+              Your personal warranty tracker. Secure, private, and reliable.
             </p>
           </div>
           
@@ -65,15 +67,15 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
             <ul className="space-y-3">
               <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
                 <Shield className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                <span>Your data stays on your device</span>
+                <span>Your data is secure & private</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
                 <Lock className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
                 <span>Zero tracking or analytics</span>
               </li>
               <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                <UserX className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                <span>No account required</span>
+                <Zap className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
+                <span>Free forever</span>
               </li>
             </ul>
           </div>

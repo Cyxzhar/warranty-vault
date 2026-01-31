@@ -85,7 +85,7 @@ export default function OnboardingScreen({ onStart }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0 }}
         >
-          Free forever &middot; No account required &middot; Data stays on your device
+          Free forever &middot; Secure & private &middot; Works offline
         </motion.p>
       </div>
     </div>

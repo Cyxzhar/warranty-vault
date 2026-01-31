@@ -6,7 +6,7 @@ const features = [
   {
     icon: Layers,
     title: "Set up in 30 seconds",
-    desc: "No account. No forms. Just add your first warranty and you're done.",
+    desc: "No setup needed. Just add your first warranty and you're done.",
     color: "text-orange-400",
     iconBg: "bg-orange-500/15",
     gradient: "from-orange-500/20 to-amber-500/5",
@@ -15,12 +15,11 @@ const features = [
   {
     icon: Shield,
     title: "Your vault, your device",
-    desc: "Zero cloud storage. No tracking pixels. Your data never leaves your phone.",
-    badges: ["Local Storage", "No Account", "Open Source"],
+    desc: "Zero tracking pixels. Your data is secure, private, and always protected.",
+    badges: ["Secure Storage", "Smart Alerts"],
     color: "text-emerald-400",
     iconBg: "bg-emerald-500/15",
     gradient: "from-emerald-500/20 to-teal-500/5",
-    hero: true,
     delay: 0.15
   },
   {
@@ -36,10 +35,13 @@ const features = [
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-32 relative overflow-hidden">
+    <section id="features" className="py-20 sm:py-24 relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="text-center mb-24">
+          <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
               Everything you need, <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">nothing you don't</span>
             </h2>
@@ -54,9 +56,9 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: feature.delay, duration: 0.6 }}
-              className={`relative group ${feature.hero ? 'lg:scale-[1.03] lg:-mt-6 lg:mb-6' : ''}`}
+              className="relative group"
             >
-              <div className={`h-full glass-card rounded-[2rem] p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-white/5 ${feature.hero ? 'bg-slate-800/40 border-emerald-500/20 shadow-lg shadow-emerald-500/10' : ''}`}>
+              <div className="h-full glass-card rounded-[2rem] p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-white/5">
                 {/* Hover Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 

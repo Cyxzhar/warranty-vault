@@ -4,13 +4,13 @@ import FadeIn from '../animations/FadeIn';
 
 export default function PricingSection({ onOpenApp }) {
   return (
-    <section id="pricing" className="py-24 sm:py-32 relative overflow-hidden bg-[#0a0e1a]">
-      {/* Background Ambience */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-900/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="pricing" className="py-20 sm:py-24 relative overflow-hidden bg-[#0a0e1a]">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-indigo-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-24">
+          <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
               Simple, transparent <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">pricing</span>
             </h2>
@@ -38,7 +38,7 @@ export default function PricingSection({ onOpenApp }) {
             <p className="text-slate-400 mb-8 text-base leading-relaxed h-[48px]">Perfect for individuals just getting started with organizing their warranties.</p>
             
             <ul className="space-y-5 mb-10">
-              {['10 Warranties', 'Local Storage', 'Basic Reminders', 'Works Offline'].map((item) => (
+              {['10 Warranties', 'Secure Storage', 'Basic Reminders', 'Works Offline'].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-slate-300">
                   <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center shrink-0 border border-slate-700">
                     <Check className="w-4 h-4 text-emerald-400" strokeWidth={3} />
@@ -48,9 +48,9 @@ export default function PricingSection({ onOpenApp }) {
               ))}
             </ul>
 
-            <button 
+            <button
               onClick={onOpenApp}
-              className="w-full py-4 rounded-xl border border-slate-700 text-white font-bold hover:bg-slate-800 transition-all hover:border-slate-600 hover:-translate-y-0.5"
+              className="w-full py-4 rounded-xl bg-slate-800 border border-slate-700 text-white font-bold hover:bg-slate-700 hover:border-slate-600 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               Start Free
             </button>
