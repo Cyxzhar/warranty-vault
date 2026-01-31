@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { Trash2, Edit3, Image, Calendar, Clock, Eye, MoreHorizontal, Smartphone } from 'lucide-react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { Trash2, Edit3, Image, Calendar, Clock, Eye } from 'lucide-react';
 import Badge from '../common/Badge';
 import { getDaysUntilExpiry, getWarrantyStatus, formatDate, calculateExpiryDate } from '../../utils/dateUtils';
 import { getCategoryLabel } from '../../constants/categories';
@@ -18,6 +18,10 @@ export default function WarrantyCard({ warranty, onEdit, onDelete, onViewReceipt
     status === 'expired' ? 'status-expired' :
     status === 'expiring' ? 'status-expiring' :
     'status-active';
+
+  const dragX = useMotionValue(0);
+  const deleteRevealOpacity = useTransform(dragX, [-120, -60, 0], [1, 0.6, 0]);
+  const deleteIconScale = useTransform(dragX, [-120, -60, 0], [1.2, 0.8, 0.5]);
 
   const handleDragEnd = (event, info) => {
     if (info.offset.x < -100) {
@@ -118,19 +122,32 @@ export default function WarrantyCard({ warranty, onEdit, onDelete, onViewReceipt
 
   // LIST VIEW (Default)
   return (
-    <motion.div
-      layout
-      drag="x"
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={{ left: 0.5, right: 0.1 }}
-      onDragEnd={handleDragEnd}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      whileHover={{ scale: 1.01 }}
-      className="group relative overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] hover:border-[var(--accent-primary)]/50 hover:shadow-xl transition-all duration-300 cursor-pointer touch-pan-y"
-      onClick={() => onViewDetails && onViewDetails(warranty)}
-    >
+    <div className="relative">
+      {/* Delete reveal behind card (mobile only) */}
+      <motion.div
+        style={{ opacity: deleteRevealOpacity }}
+        className="absolute inset-0 rounded-[var(--radius-lg)] bg-[var(--status-expired)] flex items-center justify-end pr-8 sm:hidden"
+      >
+        <motion.div style={{ scale: deleteIconScale }} className="flex flex-col items-center gap-1 text-white">
+          <Trash2 className="w-6 h-6" />
+          <span className="text-xs font-bold">Delete</span>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        layout
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={{ left: 0.5, right: 0.05 }}
+        onDragEnd={handleDragEnd}
+        style={{ x: dragX }}
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95 }}
+        whileHover={{ scale: 1.01 }}
+        className="group relative overflow-hidden bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-[var(--radius-lg)] hover:border-[var(--accent-primary)]/50 hover:shadow-xl transition-shadow duration-300 cursor-pointer touch-pan-y"
+        onClick={() => onViewDetails && onViewDetails(warranty)}
+      >
       {/* Status accent bar (left edge) */}
       <div className={`absolute left-0 top-0 bottom-0 w-1 bg-[var(--${statusColorVar})]`} />
       
@@ -234,8 +251,7 @@ export default function WarrantyCard({ warranty, onEdit, onDelete, onViewReceipt
         </div>
       </div>
       
-      {/* Swipe hint for mobile */}
-      <div className="absolute right-0 top-0 bottom-0 w-1 bg-gradient-to-l from-[var(--status-expired)]/20 to-transparent opacity-0 sm:hidden" />
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
