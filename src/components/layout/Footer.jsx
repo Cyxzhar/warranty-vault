@@ -1,94 +1,57 @@
-import { motion } from 'framer-motion';
-import { Shield, Bell, Lock, Zap } from 'lucide-react';
+import { Shield, Lock, Zap, Bell } from 'lucide-react';
 
 export default function Footer({ onRequestNotifications, notificationStatus }) {
   return (
-    <footer className="mt-auto border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)]/30 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        
-        {/* Top Section: Badges & Notification Action */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
-           {/* Privacy Badges */}
-           <div className="flex flex-wrap items-center justify-center gap-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-xs text-[var(--text-secondary)]">
-              <Shield className="w-3.5 h-3.5 text-[var(--status-active)]" />
-              Secure & private
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-xs text-[var(--text-secondary)]">
-              <Lock className="w-3.5 h-3.5 text-[var(--status-active)]" />
-              No tracking
-            </div>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-secondary)] text-xs text-[var(--text-secondary)]">
-              <Zap className="w-3.5 h-3.5 text-[var(--accent-primary)]" />
-              Free forever
-            </div>
-          </div>
-
-          {/* Notification Button */}
-          {notificationStatus === 'default' && onRequestNotifications && (
-            <button
-              onClick={onRequestNotifications}
-              className="flex items-center gap-2 px-4 py-2 rounded-[var(--radius-full)] bg-[var(--bg-elevated)] hover:bg-[var(--bg-secondary)] text-[var(--accent-primary)] text-xs font-medium transition-colors border border-[var(--border-subtle)] hover:border-[var(--accent-primary)]/50"
-            >
-              <Bell className="w-3.5 h-3.5" />
-              Enable expiry reminders
-            </button>
-          )}
-        </div>
-
-        {/* Middle Grid (Desktop) - Simplified for App */}
-        <div className="hidden md:grid grid-cols-3 gap-8 mb-10 border-b border-[var(--border-subtle)] pb-10">
+    <footer className="mt-auto bg-[#0a0e1a] relative">
+      <div className="max-w-[1400px] mx-auto px-6">
+        {/* Main row */}
+        <div className="py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Brand */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                 <Shield className="w-5 h-5 text-slate-900" strokeWidth={2.5} />
-               </div>
-               <span className="font-[var(--font-display)] font-bold text-[var(--text-primary)]">Warranty Vault</span>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/15">
+              <Shield className="w-5 h-5 text-slate-900" strokeWidth={2.5} />
             </div>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
-              Your personal warranty tracker. Secure, private, and reliable.
-            </p>
+            <span className="font-[800] text-white text-lg tracking-tight">Warranty Vault</span>
           </div>
-          
-          {/* Resources */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Support</h4>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Privacy Guide</a></li>
-              <li><a href="#" className="text-[var(--text-secondary)] hover:text-[var(--accent-primary)] transition-colors">Feedback</a></li>
-            </ul>
-          </div>
-          
-          {/* Privacy */}
-          <div className="space-y-4">
-            <h4 className="font-semibold text-xs uppercase tracking-wider text-[var(--text-primary)]">Privacy First</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                <Shield className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                <span>Your data is secure & private</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                <Lock className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                <span>Zero tracking or analytics</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-[var(--text-secondary)]">
-                <Zap className="w-4 h-4 text-[var(--accent-primary)] mt-0.5 flex-shrink-0" />
-                <span>Free forever</span>
-              </li>
-            </ul>
+
+          {/* Links + notification */}
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
+            <a href="#" className="text-slate-400 hover:text-white transition-colors">Help Center</a>
+            <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms</a>
+            {notificationStatus === 'default' && onRequestNotifications && (
+              <button
+                onClick={onRequestNotifications}
+                className="flex items-center gap-1.5 text-amber-400 hover:text-amber-300 transition-colors"
+              >
+                <Bell className="w-3.5 h-3.5" />
+                Enable Reminders
+              </button>
+            )}
           </div>
         </div>
-        
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
-          <p>
-            © {new Date().getFullYear()} Warranty Vault · Made with ❤️ for privacy
+
+        {/* Separator */}
+        <div className="h-px bg-slate-800/60" />
+
+        {/* Bottom bar */}
+        <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-slate-500 text-sm">
+            &copy; {new Date().getFullYear()} Warranty Vault
           </p>
-          <div className="flex items-center gap-6">
-             <a href="#" className="hover:text-[var(--accent-primary)] transition-colors">Privacy Policy</a>
-             <a href="#" className="hover:text-[var(--accent-primary)] transition-colors">Terms of Service</a>
+          <div className="flex items-center gap-5 text-slate-500 text-xs">
+            <span className="flex items-center gap-1.5">
+              <Shield className="w-3.5 h-3.5 text-emerald-500/70" />
+              Secure
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Lock className="w-3.5 h-3.5 text-emerald-500/70" />
+              Private
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-emerald-500/70" />
+              Free
+            </span>
           </div>
         </div>
       </div>
