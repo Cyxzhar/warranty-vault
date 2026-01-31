@@ -37,7 +37,10 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative py-32 overflow-hidden bg-[#0f1419]">
+    <section id="how-it-works" className="relative py-20 sm:py-24 overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-orange-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
+
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
           <div className="text-center max-w-3xl mx-auto mb-24">

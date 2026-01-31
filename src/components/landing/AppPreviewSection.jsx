@@ -4,7 +4,7 @@ import FadeIn from '../animations/FadeIn';
 
 export default function AppPreviewSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-[#0a0e1a]">
+    <section className="relative py-16 sm:py-24 overflow-hidden bg-[#0a0e1a]">
       {/* Background Ambience */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]" />
@@ -12,7 +12,7 @@ export default function AppPreviewSection() {
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="text-center max-w-3xl mx-auto mb-16 sm:mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6 tracking-tight">
               Everything in one <br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">
