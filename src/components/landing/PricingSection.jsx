@@ -20,18 +20,18 @@ export default function PricingSection({ onOpenApp }) {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto items-start">
           {/* Free Tier */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="rounded-[2rem] p-8 sm:p-10 border border-slate-800 bg-slate-900/40 backdrop-blur-sm relative hover:border-slate-700 transition-colors"
+            className="rounded-[2rem] p-8 sm:p-10 border border-slate-800 bg-slate-900/40 backdrop-blur-sm relative hover:border-slate-700 transition-colors opacity-95"
           >
             <h3 className="text-2xl font-bold text-white mb-2">Free Forever</h3>
             <div className="flex items-baseline gap-1 mb-6">
-              <span className="text-4xl sm:text-5xl font-bold text-white">$0</span>
+              <span className="text-5xl sm:text-6xl font-bold text-white tracking-tight">$0</span>
               <span className="text-slate-500 font-medium">/month</span>
             </div>
             
@@ -41,7 +41,7 @@ export default function PricingSection({ onOpenApp }) {
               {['10 Warranties', 'Local Storage', 'Basic Reminders', 'Works Offline'].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-slate-300">
                   <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center shrink-0 border border-slate-700">
-                    <Check className="w-3.5 h-3.5 text-emerald-400" strokeWidth={3} />
+                    <Check className="w-4 h-4 text-emerald-400" strokeWidth={3} />
                   </div>
                   {item}
                 </li>
@@ -50,7 +50,7 @@ export default function PricingSection({ onOpenApp }) {
 
             <button 
               onClick={onOpenApp}
-              className="w-full py-4 rounded-xl border border-slate-700 text-white font-bold hover:bg-slate-800 transition-colors hover:border-slate-600"
+              className="w-full py-4 rounded-xl border border-slate-700 text-white font-bold hover:bg-slate-800 transition-all hover:border-slate-600 hover:-translate-y-0.5"
             >
               Start Free
             </button>
@@ -62,11 +62,10 @@ export default function PricingSection({ onOpenApp }) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative z-10 lg:-mt-4"
+            className="relative z-10 lg:-mt-4 lg:scale-[1.02]"
           >
             {/* Subtle Glow Effect */}
-            <div className="absolute -inset-px bg-gradient-to-b from-amber-500/50 to-orange-600/50 rounded-[2.1rem] blur-sm opacity-50" />
-            <div className="absolute -inset-4 bg-orange-500/10 rounded-[3rem] blur-2xl opacity-50" />
+            <div className="absolute -inset-px bg-gradient-to-b from-amber-500/30 to-orange-600/30 rounded-[2.1rem] blur-sm opacity-30" />
             
             <div className="relative bg-slate-900 rounded-[2rem] p-8 sm:p-10 border border-amber-500/20 shadow-2xl">
               <div className="absolute top-6 right-6">
@@ -78,7 +77,7 @@ export default function PricingSection({ onOpenApp }) {
 
               <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-orange-400">$3</span>
+                <span className="text-5xl sm:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-orange-400">$3</span>
                 <span className="text-slate-500 font-medium">/month</span>
               </div>
               
@@ -88,7 +87,7 @@ export default function PricingSection({ onOpenApp }) {
                 {['Unlimited Warranties', 'Cloud Backup', 'Email & SMS Alerts', 'Priority Support', 'Receipt OCR'].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-white font-medium">
                     <div className="w-6 h-6 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20 shrink-0">
-                      <Check className="w-3.5 h-3.5 text-slate-900 stroke-[3]" />
+                      <Check className="w-4 h-4 text-slate-900 stroke-[3]" />
                     </div>
                     {item}
                   </li>

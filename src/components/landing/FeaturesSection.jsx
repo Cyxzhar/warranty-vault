@@ -8,6 +8,7 @@ const features = [
     title: "Set up in 30 seconds",
     desc: "No account. No forms. Just add your first warranty and you're done.",
     color: "text-orange-400",
+    iconBg: "bg-orange-500/15",
     gradient: "from-orange-500/20 to-amber-500/5",
     delay: 0
   },
@@ -17,6 +18,7 @@ const features = [
     desc: "Zero cloud storage. No tracking pixels. Your data never leaves your phone.",
     badges: ["Local Storage", "No Account", "Open Source"],
     color: "text-emerald-400",
+    iconBg: "bg-emerald-500/15",
     gradient: "from-emerald-500/20 to-teal-500/5",
     hero: true,
     delay: 0.15
@@ -26,6 +28,7 @@ const features = [
     title: "Smart reminders",
     desc: "Get alerted 30 days before expiry. Never lose money on missed warranties.",
     color: "text-amber-400",
+    iconBg: "bg-amber-500/15",
     gradient: "from-amber-500/20 to-yellow-500/5",
     delay: 0.3
   }
@@ -38,12 +41,12 @@ export default function FeaturesSection() {
         <FadeIn>
           <div className="text-center mb-24">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Why developers <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">trust</span> Warranty Vault
+              Everything you need, <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">nothing you don't</span>
             </h2>
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 items-start">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -51,19 +54,19 @@ export default function FeaturesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: feature.delay, duration: 0.6 }}
-              className={`relative group ${feature.hero ? 'lg:-mt-8 lg:mb-8' : ''}`}
+              className={`relative group ${feature.hero ? 'lg:scale-[1.03] lg:-mt-6 lg:mb-6' : ''}`}
             >
-              <div className={`h-full glass-card rounded-[2rem] p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-white/5 ${feature.hero ? 'bg-slate-800/40 border-emerald-500/20 shadow-emerald-500/10' : ''}`}>
+              <div className={`h-full glass-card rounded-[2rem] p-10 relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border-white/5 ${feature.hero ? 'bg-slate-800/40 border-emerald-500/20 shadow-lg shadow-emerald-500/10' : ''}`}>
                 {/* Hover Gradient */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className={`w-16 h-16 rounded-2xl bg-slate-900/50 flex items-center justify-center mb-8 border border-white/5 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                  <div className={`w-16 h-16 rounded-2xl ${feature.iconBg} flex items-center justify-center mb-8 border border-white/5 shadow-lg group-hover:scale-110 transition-transform duration-500`}>
                     <feature.icon className={`w-8 h-8 ${feature.color}`} strokeWidth={1.5} />
                   </div>
                   
                   <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-                  <p className="text-slate-400 text-lg leading-relaxed mb-8 flex-1">
+                  <p className="text-slate-400 text-base leading-relaxed mb-8 flex-1">
                     {feature.desc}
                   </p>
 

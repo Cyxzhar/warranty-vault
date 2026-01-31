@@ -34,26 +34,33 @@ export default function AppPreviewSection() {
           className="relative max-w-5xl mx-auto perspective-1000"
         >
           {/* Glassmorphic Container Frame */}
-          <div className="relative p-3 sm:p-8 rounded-[1.5rem] sm:rounded-[2.5rem] bg-slate-900/40 backdrop-blur-xl border border-white/5 shadow-2xl">
+          <div className="relative p-2 sm:p-6 rounded-[1.5rem] sm:rounded-[2.5rem] bg-slate-900/40 backdrop-blur-xl border border-white/5 shadow-2xl">
              
              {/* Inner Mockup Window */}
-             <div className="relative rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden shadow-2xl border border-slate-700/30 bg-[#0f1419] aspect-[16/10] sm:aspect-[16/9] group">
+             <div className="relative rounded-[1rem] sm:rounded-[1.5rem] overflow-hidden shadow-2xl border border-slate-700/30 bg-[#0f1419] aspect-[16/10] sm:aspect-[16/9] max-h-[600px] group">
                 
                 {/* Image Container with Blending */}
                 <div className="absolute inset-0 bg-[#0f1419]">
-                   <img 
-                    src={appMockup} 
-                    alt="App Dashboard Preview" 
-                    className="w-full h-full object-cover object-top opacity-90 mix-blend-normal filter brightness-90 contrast-105" 
+                   <img
+                    src={appMockup}
+                    alt="App Dashboard Preview"
+                    className="w-full h-full object-cover object-top opacity-80 brightness-75 contrast-110 saturate-[0.85]"
                     loading="lazy"
                   />
-                  {/* Vignette & Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1419] via-transparent to-transparent opacity-40 pointer-events-none" />
-                  <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] pointer-events-none" />
+                  {/* Bottom fade */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f1419] via-[#0f1419]/20 to-transparent pointer-events-none" />
+                  {/* Top fade */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#0f1419]/40 via-transparent to-transparent pointer-events-none" />
+                  {/* Side fades */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0f1419]/50 via-transparent to-[#0f1419]/50 pointer-events-none" />
+                  {/* Heavy vignette */}
+                  <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.7)] pointer-events-none" />
+                  {/* Radial vignette from center */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(15,20,25,0.6) 100%)' }} />
                 </div>
-                
-                {/* Shine Effect */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent pointer-events-none" />
+
+                {/* Subtle shine */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/3 via-transparent to-transparent pointer-events-none" />
              </div>
           </div>
 

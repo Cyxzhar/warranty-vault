@@ -10,6 +10,7 @@ const steps = [
     color: "text-orange-400",
     bg: "bg-orange-500/10",
     border: "border-orange-500/20",
+    badgeBg: "from-orange-500/20 to-orange-600/10",
     delay: 0
   },
   {
@@ -19,6 +20,7 @@ const steps = [
     color: "text-blue-400",
     bg: "bg-blue-500/10",
     border: "border-blue-500/20",
+    badgeBg: "from-blue-500/20 to-blue-600/10",
     delay: 0.2
   },
   {
@@ -28,6 +30,7 @@ const steps = [
     color: "text-emerald-400",
     bg: "bg-emerald-500/10",
     border: "border-emerald-500/20",
+    badgeBg: "from-emerald-500/20 to-emerald-600/10",
     delay: 0.4
   }
 ];
@@ -47,7 +50,7 @@ export default function HowItWorksSection() {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8 relative">
           {/* Animated Path (Desktop) */}
           <div className="hidden lg:block absolute top-[100px] left-0 w-full h-24 -z-10 opacity-30 pointer-events-none">
              <svg className="w-full h-full overflow-visible">
@@ -77,9 +80,9 @@ export default function HowItWorksSection() {
               transition={{ delay: step.delay, duration: 0.6 }}
               className="relative group"
             >
-              <div className="flex flex-col items-center text-center p-8 rounded-[2rem] glass-card hover:-translate-y-2 transition-all duration-500 h-full">
+              <div className="flex flex-col items-center text-center p-8 sm:p-10 rounded-[2rem] glass-card border border-slate-700/30 hover:-translate-y-2 transition-all duration-500 h-full">
                 {/* Number Badge */}
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br from-slate-800 to-slate-900 border ${step.border} flex items-center justify-center text-2xl font-bold ${step.color} mb-8 shadow-xl relative z-10`}>
+                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.badgeBg} border ${step.border} flex items-center justify-center text-2xl font-bold ${step.color} mb-8 shadow-xl relative z-10`}>
                   {i + 1}
                 </div>
 
@@ -91,10 +94,10 @@ export default function HowItWorksSection() {
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-amber-400 transition-colors">
+                <h3 className="text-[22px] font-bold text-white mb-4 group-hover:text-amber-400 transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-slate-400 leading-relaxed text-lg">
+                <p className="text-slate-400 leading-relaxed text-base">
                   {step.desc}
                 </p>
               </div>

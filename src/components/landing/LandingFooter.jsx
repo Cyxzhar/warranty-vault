@@ -15,7 +15,7 @@ export default function LandingFooter({ onOpenApp }) {
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-20 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16 mb-20">
             {/* Column 1: Brand */}
             <div className="space-y-6">
               <div className="flex items-center gap-3">
@@ -42,10 +42,10 @@ export default function LandingFooter({ onOpenApp }) {
             <div className="space-y-6">
               <h4 className="font-bold text-white text-base">Product</h4>
               <ul className="space-y-4">
-                <li><a href="#features" onClick={(e) => handleLinkClick(e, '#features')} className="text-slate-400 hover:text-amber-400 transition-colors">Features</a></li>
-                <li><a href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="text-slate-400 hover:text-amber-400 transition-colors">How It Works</a></li>
-                <li><a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-slate-400 hover:text-amber-400 transition-colors">Pricing</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Changelog</a></li>
+                <li><a href="#features" onClick={(e) => handleLinkClick(e, '#features')} className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Features</a></li>
+                <li><a href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">How It Works</a></li>
+                <li><a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Pricing</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Changelog</a></li>
               </ul>
             </div>
 
@@ -53,9 +53,9 @@ export default function LandingFooter({ onOpenApp }) {
              <div className="space-y-6">
               <h4 className="font-bold text-white text-base">Resources</h4>
               <ul className="space-y-4">
-                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Support Center</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Privacy Guide</a></li>
-                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Support Center</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Privacy Guide</a></li>
+                <li><a href="#" className="text-slate-400 hover:text-amber-400 transition-colors hover:underline underline-offset-4">Terms of Service</a></li>
               </ul>
             </div>
 
@@ -81,7 +81,7 @@ export default function LandingFooter({ onOpenApp }) {
 
           {/* Bottom bar */}
           <div className="pt-8 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-6">
-            <p className="text-slate-500 text-sm">
+            <p className="text-slate-400 text-[15px]">
               &copy; {new Date().getFullYear()} Warranty Vault. Made with ❤️ for privacy.
             </p>
             <div className="flex flex-wrap items-center gap-6">

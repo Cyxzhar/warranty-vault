@@ -40,7 +40,7 @@ export default function LandingNav({ onOpenApp }) {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-[var(--color-bg-primary)]/80 backdrop-blur-xl border-b border-[var(--color-border-subtle)]'
+            ? 'bg-[var(--color-bg-primary)]/80 backdrop-blur-xl border-b border-[var(--color-border-subtle)] shadow-lg shadow-black/10'
             : 'bg-transparent'
         }`}
       >
@@ -57,7 +57,7 @@ export default function LandingNav({ onOpenApp }) {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -75,13 +75,13 @@ export default function LandingNav({ onOpenApp }) {
           <div className="flex items-center gap-4">
             <button
               onClick={onOpenApp}
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-full border border-slate-700 transition-all hover:border-slate-600 hover:shadow-lg hover:-translate-y-0.5"
+              className="hidden md:flex items-center gap-2 px-5 h-11 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-full border border-slate-700 transition-all hover:border-slate-600 hover:shadow-lg hover:-translate-y-0.5"
             >
               Log In
             </button>
             <button
               onClick={onOpenApp}
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-sm font-bold rounded-full shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all"
+              className="hidden md:flex items-center gap-2 px-5 h-11 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-sm font-bold rounded-full shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all"
             >
               Get Started <ArrowRight className="w-4 h-4" />
             </button>
