@@ -4,6 +4,8 @@ import { ToastProvider } from './context/ToastContext';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import LandingPage from './components/landing/LandingPage';
 import AppContent from './AppContent';
+import TermsOfService from './components/pages/TermsOfService';
+import PrivacyPolicy from './components/pages/PrivacyPolicy';
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -13,12 +15,20 @@ const pageVariants = {
 
 function Router() {
   const [page, setPage] = useState(() => {
-    return window.location.hash === '#/app' ? 'app' : 'landing';
+    const hash = window.location.hash;
+    if (hash === '#/app') return 'app';
+    if (hash === '#/terms') return 'terms';
+    if (hash === '#/privacy') return 'privacy';
+    return 'landing';
   });
 
   useEffect(() => {
     const handleHash = () => {
-      setPage(window.location.hash === '#/app' ? 'app' : 'landing');
+      const hash = window.location.hash;
+      if (hash === '#/app') setPage('app');
+      else if (hash === '#/terms') setPage('terms');
+      else if (hash === '#/privacy') setPage('privacy');
+      else setPage('landing');
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
@@ -45,6 +55,26 @@ function Router() {
           className="min-h-screen"
         >
           <AppContent onBackToLanding={navigateToLanding} />
+        </motion.div>
+      ) : page === 'terms' ? (
+        <motion.div
+          key="terms"
+          variants={pageVariants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        >
+          <TermsOfService onBack={navigateToLanding} />
+        </motion.div>
+      ) : page === 'privacy' ? (
+        <motion.div
+          key="privacy"
+          variants={pageVariants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+        >
+          <PrivacyPolicy onBack={navigateToLanding} />
         </motion.div>
       ) : (
         <motion.div

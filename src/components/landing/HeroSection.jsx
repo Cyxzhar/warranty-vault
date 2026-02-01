@@ -60,7 +60,7 @@ export default function HeroSection({ onOpenApp }) {
                 onClick={onOpenApp}
                 className="group relative px-7 py-3.5 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-bold text-base text-white shadow-[0_10px_40px_-10px_rgba(249,115,22,0.5)] hover:shadow-[0_20px_60px_-10px_rgba(249,115,22,0.6)] transition-all hover:-translate-y-1 w-full sm:w-auto flex items-center justify-center gap-2"
               >
-                Start Tracking Free
+                Try it now
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 

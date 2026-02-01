@@ -77,7 +77,7 @@ export default function PricingSection({ onOpenApp }) {
 
               <h3 className="text-2xl font-bold text-white mb-2">Pro</h3>
               <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-5xl sm:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-orange-400">$3</span>
+                <span className="text-5xl sm:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-amber-200 to-orange-400">$1</span>
                 <span className="text-slate-500 font-medium">/month</span>
               </div>
               

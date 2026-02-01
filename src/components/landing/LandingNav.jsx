@@ -8,7 +8,7 @@ const navLinks = [
   { href: '#pricing', label: 'Pricing' },
 ];
 
-export default function LandingNav({ onOpenApp }) {
+export default function LandingNav({ onOpenApp, onContactClick }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -74,16 +74,16 @@ export default function LandingNav({ onOpenApp }) {
           {/* Actions */}
           <div className="flex items-center gap-4">
             <button
-              onClick={onOpenApp}
+              onClick={onContactClick}
               className="hidden md:flex items-center gap-2 px-5 h-11 bg-slate-800 hover:bg-slate-700 text-white text-sm font-semibold rounded-full border border-slate-700 transition-all hover:border-slate-600 hover:shadow-lg hover:-translate-y-0.5"
             >
-              Log In
+              Contact Us
             </button>
             <button
               onClick={onOpenApp}
               className="hidden md:flex items-center gap-2 px-5 h-11 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 text-sm font-bold rounded-full shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all"
             >
-              Get Started <ArrowRight className="w-4 h-4" />
+              Try it now <ArrowRight className="w-4 h-4" />
             </button>
 
             {/* Mobile Toggle */}
@@ -129,16 +129,16 @@ export default function LandingNav({ onOpenApp }) {
 
             <div className="mt-auto flex flex-col gap-4">
               <button 
-                onClick={onOpenApp}
+                onClick={() => { setMobileOpen(false); onContactClick(); }}
                 className="w-full py-4 bg-slate-800 rounded-xl font-bold border border-slate-700"
               >
-                Log In
+                Contact Us
               </button>
               <button 
                 onClick={onOpenApp}
                 className="w-full py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 rounded-xl font-bold shadow-lg shadow-orange-500/20"
               >
-                Get Started
+                Try it now
               </button>
             </div>
           </motion.div>
