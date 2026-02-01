@@ -13,6 +13,7 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
             </div>
             <span className="font-[800] text-white text-lg tracking-tight">ShelfLife</span>
           </div>
+          <p className="hidden md:block text-xs text-slate-500 mt-1 ml-12">The simple, offline-first warranty manager.</p>
 
           {/* Links + notification */}
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">

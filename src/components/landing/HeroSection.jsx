@@ -46,8 +46,7 @@ export default function HeroSection({ onOpenApp }) {
               transition={{ delay: 0.2 }}
               className="text-lg text-slate-300 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
             >
-              Stop letting hundreds of dollars slip away. Track your product warranties in seconds.
-              Secure, private, and always on your device.
+              Stop letting hundreds of dollars slip away. ShelfLife is the simple warranty manager that tracks your purchases and reminds you before they expire. Secure, private, and always on your device.
             </motion.p>
 
             <motion.div
