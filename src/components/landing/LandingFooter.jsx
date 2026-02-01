@@ -27,8 +27,7 @@ export default function LandingFooter({ onOpenApp }) {
               <a href="#features" onClick={(e) => handleLinkClick(e, '#features')} className="text-slate-400 hover:text-white transition-colors">Features</a>
               <a href="#how-it-works" onClick={(e) => handleLinkClick(e, '#how-it-works')} className="text-slate-400 hover:text-white transition-colors">How It Works</a>
               <a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-slate-400 hover:text-white transition-colors">Pricing</a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms</a>
+              <a href="mailto:support@warrantyvault.app?subject=Warranty%20Vault%20Inquiry" className="text-slate-400 hover:text-white transition-colors">Contact</a>
             </nav>
           </div>
 

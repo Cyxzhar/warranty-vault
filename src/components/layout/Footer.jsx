@@ -16,9 +16,7 @@ export default function Footer({ onRequestNotifications, notificationStatus }) {
 
           {/* Links + notification */}
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">Help Center</a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">Terms</a>
+            <a href="mailto:support@warrantyvault.app?subject=Warranty%20Vault%20Feedback" className="text-slate-400 hover:text-white transition-colors">Feedback & Support</a>
             {notificationStatus === 'default' && onRequestNotifications && (
               <button
                 onClick={onRequestNotifications}
