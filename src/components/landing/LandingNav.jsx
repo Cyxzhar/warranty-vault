@@ -53,7 +53,7 @@ export default function LandingNav({ onOpenApp, onContactClick }) {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:rotate-6 transition-transform">
               <Shield className="w-5 h-5 text-slate-900" strokeWidth={2.5} />
             </div>
-            <span className="font-[var(--font-display)] font-bold text-lg tracking-tight">Warranty Vault</span>
+            <span className="font-[var(--font-display)] font-bold text-lg tracking-tight">ShelfLife</span>
           </div>
 
           {/* Desktop Nav */}

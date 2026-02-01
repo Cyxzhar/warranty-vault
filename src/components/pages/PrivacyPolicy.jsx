@@ -23,7 +23,7 @@ export default function PrivacyPolicy({ onBack }) {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">1. Your Data Stays With You</h2>
             <p>
-              Warranty Vault is designed with a "Local First" architecture. This means:
+              ShelfLife is designed with a "Local First" architecture. This means:
             </p>
             <ul className="list-disc pl-5 mt-4 space-y-2">
               <li>Your warranty data and receipt images are stored <strong>only on your device</strong> (in your browser's LocalStorage and IndexedDB).</li>
@@ -49,7 +49,7 @@ export default function PrivacyPolicy({ onBack }) {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">4. Contact Us</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@warrantyvault.app" className="text-amber-400 hover:underline">support@warrantyvault.app</a>.
+              If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@shelflife.app" className="text-amber-400 hover:underline">support@shelflife.app</a>.
             </p>
           </section>
         </motion.div>

@@ -27,10 +27,10 @@ export default function OnboardingScreen({ onStart, onSkip }) {
             <Shield className="w-10 h-10 text-slate-900" strokeWidth={2.5} />
           </motion.div>
           <h1 className="text-4xl font-bold text-white tracking-tight">
-            Warranty Vault
+            ShelfLife
           </h1>
           <p className="text-slate-400 mt-2 text-lg">
-            Never lose money on expired warranties again
+            Don't let your money expire
           </p>
         </motion.div>
 

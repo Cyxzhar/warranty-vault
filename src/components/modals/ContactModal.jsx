@@ -21,9 +21,9 @@ export default function ContactModal({ isOpen, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Warranty Vault Inquiry from ${formData.name}`);
+    const subject = encodeURIComponent(`ShelfLife Inquiry from ${formData.name}`);
     const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`);
-    window.location.href = `mailto:support@warrantyvault.app?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:support@shelflife.app?subject=${subject}&body=${body}`;
     onClose();
   };
 

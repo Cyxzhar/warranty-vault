@@ -19,7 +19,7 @@ export default function LandingFooter({ onOpenApp }) {
               <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/15">
                 <Shield className="w-5 h-5 text-slate-900" strokeWidth={2.5} />
               </div>
-              <span className="font-[800] text-white text-lg tracking-tight">Warranty Vault</span>
+              <span className="font-[800] text-white text-lg tracking-tight">ShelfLife</span>
             </div>
 
             {/* Links */}
@@ -29,7 +29,7 @@ export default function LandingFooter({ onOpenApp }) {
               <a href="#pricing" onClick={(e) => handleLinkClick(e, '#pricing')} className="text-slate-400 hover:text-white transition-colors">Pricing</a>
               <a href="#/privacy" className="text-slate-400 hover:text-white transition-colors">Privacy</a>
               <a href="#/terms" className="text-slate-400 hover:text-white transition-colors">Terms</a>
-              <a href="mailto:support@warrantyvault.app?subject=Warranty%20Vault%20Inquiry" className="text-slate-400 hover:text-white transition-colors">Contact</a>
+              <a href="mailto:support@shelflife.app?subject=ShelfLife%20Inquiry" className="text-slate-400 hover:text-white transition-colors">Contact</a>
             </nav>
           </div>
 
@@ -39,7 +39,7 @@ export default function LandingFooter({ onOpenApp }) {
           {/* Bottom bar */}
           <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Warranty Vault
+              &copy; {new Date().getFullYear()} ShelfLife
             </p>
             <div className="flex items-center gap-5 text-slate-500 text-xs">
               <span className="flex items-center gap-1.5">

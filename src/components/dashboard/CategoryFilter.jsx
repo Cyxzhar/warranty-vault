@@ -25,7 +25,6 @@ export default function CategoryFilter({ active, onChange, counts = {} }) {
   return (
     <div className="relative mb-8 group -mx-4 px-4 sm:mx-0 sm:px-0">
       {/* Scroll Fade Indicators */}
-      <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[var(--bg-primary)] to-transparent z-10 pointer-events-none" />
 
       <div className="overflow-x-auto scrollbar-hide py-2 snap-x snap-mandatory">

@@ -23,14 +23,14 @@ export default function TermsOfService({ onBack }) {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">1. Introduction</h2>
             <p>
-              Welcome to Warranty Vault. By accessing or using our website and application, you agree to be bound by these Terms of Service and all applicable laws and regulations.
+              Welcome to ShelfLife. By accessing or using our website and application, you agree to be bound by these Terms of Service and all applicable laws and regulations.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">2. Use License</h2>
             <p>
-              Warranty Vault is a free tool provided "as is". You may use it for personal, non-commercial purposes to track your product warranties.
+              ShelfLife is a free tool provided "as is". You may use it for personal, non-commercial purposes to track your product warranties.
             </p>
             <ul className="list-disc pl-5 mt-4 space-y-2">
               <li>You retain all rights to the data and images you upload.</li>
@@ -42,14 +42,14 @@ export default function TermsOfService({ onBack }) {
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">3. Disclaimer</h2>
             <p>
-              The materials on Warranty Vault are provided on an 'as is' basis. Warranty Vault makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+              The materials on ShelfLife are provided on an 'as is' basis. ShelfLife makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
             </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-xl font-semibold text-white mb-4">4. Limitations</h2>
             <p>
-              In no event shall Warranty Vault or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Warranty Vault.
+              In no event shall ShelfLife or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on ShelfLife.
             </p>
           </section>
         </motion.div>
