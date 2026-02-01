@@ -209,7 +209,10 @@ export default function AppContent({ onBackToLanding }) {
     return (
       <>
         <ToastContainer />
-        <OnboardingScreen onStart={handleOpenAdd} />
+        <OnboardingScreen 
+          onStart={handleOpenAdd} 
+          onSkip={() => setOnboardingComplete(true)}
+        />
         <WarrantyModal
           isOpen={showWarrantyModal}
           onClose={handleCloseModal}

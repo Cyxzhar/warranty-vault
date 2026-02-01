@@ -7,7 +7,7 @@ const steps = [
   { icon: Bell, text: 'Get reminded before it expires' },
 ];
 
-export default function OnboardingScreen({ onStart }) {
+export default function OnboardingScreen({ onStart, onSkip }) {
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-lg w-full">
@@ -68,7 +68,7 @@ export default function OnboardingScreen({ onStart }) {
         {/* CTA */}
         <motion.button
           onClick={onStart}
-          className="w-full py-4 px-6 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-bold text-lg rounded-xl relative overflow-hidden group"
+          className="w-full py-4 px-6 bg-gradient-to-r from-amber-400 to-orange-500 text-slate-900 font-bold text-lg rounded-xl relative overflow-hidden group mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.85, duration: 0.5 }}
@@ -79,8 +79,19 @@ export default function OnboardingScreen({ onStart }) {
           <span className="relative z-10">Add Your First Warranty</span>
         </motion.button>
 
+        {/* Skip Link */}
+        <motion.button
+          onClick={onSkip}
+          className="w-full py-2 text-slate-500 hover:text-slate-300 text-sm font-medium transition-colors"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9, duration: 0.5 }}
+        >
+          Skip to Dashboard
+        </motion.button>
+
         <motion.p
-          className="text-center text-slate-500 text-sm mt-6"
+          className="text-center text-slate-600 text-xs mt-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0 }}
